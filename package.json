@@ -1,0 +1,31 @@
+{
+  "name": "teste",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:8080",
+  "dependencies": {
+    "@material-ui/core": "^1.4.2",
+    "@material-ui/icons": "^2.0.0",
+    "axios": "^0.18.0",
+    "history": "^4.7.2",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-intl": "^2.4.0",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-router-redux": "5.0.0-alpha.9",
+    "react-scripts": "1.1.4",
+    "recompose": "^0.28.0",
+    "redux": "^4.0.0",
+    "redux-actions": "^2.6.1",
+    "redux-saga": "^0.16.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
