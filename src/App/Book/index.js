@@ -1,50 +1,38 @@
-import React from 'react'
-import { withStyles } from '@material-ui/core';
+import React from "react";
+import { withStyles } from "@material-ui/core";
 
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
-import blue from '@material-ui/core/colors/blue';
+import Card from "@material-ui/core/Card";
+import CardMedia from "@material-ui/core/CardMedia";
 
 class Book extends React.PureComponent {
-    render() {
-        const { classes } = this.props;
+  render() {
+    const { classes } = this.props;
 
-        return (
-            <Card className={classes.card}>
-                <CardHeader avatar={<Avatar aria-label="Recipe" className={classes.avatar}> R </Avatar>}
-                    title={this.props.title}
-                    subheader={this.props.pageNumbers}
-                />
-                <CardMedia
-                    className={classes.media}
-                    image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPZpKthfkv96H0qWy-K8a9nqx3AL3yTJLfhYi948XiLZrRj3qo0A"
-                    title={this.props.title}
-                />
-                <CardContent>
-                    <Typography component="p">
-                        {this.props.description}
-                    </Typography>
-                </CardContent>
-            </Card>
-        );
-    }
+    return (
+      <Card className={classes.card}>
+        <CardMedia
+          className={classes.media}
+          image={this.props.image}
+          title={this.props.title}
+        />
+      </Card>
+    );
+  }
 }
 
 const styles = theme => ({
-    card: {
-        maxWidth: 400,
-    },
-    media: {
-        height: 0,
-        paddingTop: '56.25%', // 16:9
-    },
-    avatar: {
-        backgroundColor: blue[500],
-    },
+  card: {
+    boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
+    width: 220,
+    marginTop: 10,
+    marginRight: 15,
+    height: 360,  
+  },
+  media: {
+    paddingTop: "62.5%",
+    height: 222,
+    width: 225    
+  }
 });
 
 export default withStyles(styles)(Book);

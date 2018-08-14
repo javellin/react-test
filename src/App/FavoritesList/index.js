@@ -3,10 +3,11 @@ import Book from "../Book";
 import { actions as bookActions } from "../../common/reducers/bookReducer";
 import { compose } from "recompose";
 
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import Paper from "@material-ui/core/Paper";
-import TextField from "@material-ui/core/TextField";
+import GridList from "@material-ui/core/GridList";
+import GridListTile from "@material-ui/core/GridListTile";
+import Input from "@material-ui/core/Input";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import Search from "@material-ui/icons/Search";
 
 import { withStyles } from "@material-ui/core";
 import { connect } from "react-redux";
@@ -30,7 +31,6 @@ class FavoritesList extends React.PureComponent {
   }
 
   static getDerivedStateFromProps({ favoriteBooks }, state) {
-
     const { name } = state;
     if (name) {
       return {
@@ -46,30 +46,35 @@ class FavoritesList extends React.PureComponent {
 
     return (
       <div>
-        <Paper>
-          <TextField
-            id="name"
-            label="Name"
-            className={classes.textField}
-            value={this.state.name}
-            onChange={this.handleChange("name")}
-            margin="normal"
-          />
-        </Paper>
+        <Input
+          id="input-with-icon-adornment"
+          placeholder="Filter by book's title"
+          value={this.state.name}
+          className={classes.textField}
+          onChange={this.handleChange("name")}
+          startAdornment={
+            <InputAdornment position="start" className={classes.adornment}>
+              <Search className={classes.search} />
+            </InputAdornment>
+          }
+        />
         {favoriteBooks.length > 0 && (
-          <List component="nav" className={classes.container}>
-            {favoriteBooks.map((book, index) => {
-              return (
-                <ListItem key={index}>
-                  <Book
-                    title={book.title}
-                    description={book.description}
-                    pageNumbers={book.pageNumbers}
-                  />
-                </ListItem>
-              );
-            })}
-          </List>
+          <div className={classes.root}>
+            <GridList cellHeight={365} cols={5} component="nav" className={classes.gridList}>
+              {favoriteBooks.map((book, index) => {
+                return (
+                  <GridListTile key={index}>
+                    <Book
+                      title={book.title}
+                      description={book.description}
+                      pageNumbers={book.pageNumbers}
+                      image={book.image}
+                    />
+                  </GridListTile>
+                );
+              })}
+            </GridList>
+          </div>
         )}
       </div>
     );
@@ -77,16 +82,26 @@ class FavoritesList extends React.PureComponent {
 }
 
 const flexContainer = theme => ({
-  container: {
+  root: {
     display: "flex",
-    flexDirection: "row",
-    padding: 0,
-    float: "left"
+    flexWrap: "wrap",
+    justifyContent: "space-around",
+    overflow: "hidden",
+    backgroundColor: theme.palette.background.paper
+  },
+  gridList: {
+    width: "100%",
+    height: "100%"
+  },
+  adornment: {
+    marginTop: 9
+  },
+  search: {
+    color: "grey"
   },
   textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-    width: 200
+    width: "100%",
+    height: 50
   }
 });
 

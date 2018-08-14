@@ -6,6 +6,7 @@ import StarIcon from "@material-ui/icons/Star";
 import BookIcon from "@material-ui/icons/LibraryBooks";
 import PersonIcon from "@material-ui/icons/Person";
 import PublishIcon from "@material-ui/icons/Public";
+import Divider from "@material-ui/core/Divider";
 import { Link } from "react-router-dom";
 
 export const mailFolderListItems = (
@@ -18,6 +19,7 @@ export const mailFolderListItems = (
         <ListItemText primary="Favorites" />
       </ListItem>
     </Link>
+    <Divider />
     <Link to="/books" style={{ textDecoration: "none" }}>
       <ListItem button>
         <ListItemIcon>
@@ -26,6 +28,7 @@ export const mailFolderListItems = (
         <ListItemText primary="Books" />
       </ListItem>
     </Link>
+    <Divider />
     <Link to="/authors" style={{ textDecoration: "none" }}>
       <ListItem button>
         <ListItemIcon>
@@ -34,6 +37,7 @@ export const mailFolderListItems = (
         <ListItemText primary="Authors" />
       </ListItem>
     </Link>
+    <Divider />
     <Link to="/publishers" style={{ textDecoration: "none" }}>
       <ListItem button>
         <ListItemIcon>

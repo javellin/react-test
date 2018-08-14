@@ -14,14 +14,22 @@ import AddAuthor from "./AddAuthor";
 import AddPublisher from "./AddPublisher";
 
 class App extends Component {
+  state = {
+    isMenuOpen: true
+  };
+
+  openMenu = () => {
+    this.setState({ isMenuOpen: !this.state.isMenuOpen });
+  }
+
   render() {
     const { classes } = this.props;
 
     return (
       <div>
-        <Header />
+        <Header handleOnClick={this.openMenu}/>
         <div className={classes.root}>
-          <Menu />
+          {this.state.isMenuOpen ? <Menu/> : null}
           <main className={classes.content}>
             <Switch>
               <Route exact={true} path="/" component={FavoritesList} />

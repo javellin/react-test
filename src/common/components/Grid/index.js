@@ -27,8 +27,6 @@ class Grid extends React.PureComponent {
   render() {
     const { schema, data, classes, onDeleteClick } = this.props;
 
-    console.log(data)
-
     if (data && data.length >= 0) {
       return (
         <Paper className={classes.root}>

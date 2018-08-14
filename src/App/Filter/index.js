@@ -1,7 +1,7 @@
 import React from "react";
 import Paper from "@material-ui/core/Paper";
-import TextField from "@material-ui/core/TextField";
 import { withStyles } from "@material-ui/core";
+import { DebounceInput } from "react-debounce-input";
 
 class Filter extends React.PureComponent {
   render() {
@@ -9,13 +9,13 @@ class Filter extends React.PureComponent {
 
     return (
       <Paper>
-        <TextField
-          id="filter"
-          label={label}
-          className={classes.textField}
+        <DebounceInput
+          forceNotifyByEnter
           value={searchText}
+          placeholder={label}
+          debounceTimeout={300}
+          className={classes.textField}
           onChange={handleChange()}
-          margin="normal"
         />
       </Paper>
     );
@@ -24,9 +24,11 @@ class Filter extends React.PureComponent {
 
 const styles = theme => ({
   textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-    width: 200
+    height: 32,
+    width: 1135,
+    paddingLeft: "3em",
+    paddingRight: 48,
+    fontSize: ".9rem"
   }
 });
 
